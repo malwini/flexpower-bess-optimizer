@@ -4,10 +4,11 @@ import math
 import pyomo.environ as pyo
 import pyomo.opt as po
 
-
+# No need for loose statements and a comment, make a function out of it that returns the created solver.
 #  Define pyomo solver
 
 solvername='glpk'
+# it seems there is some kind of installation to be done here, that's something worth putting in the readme.
 solverpath_exe='C:\\glpk\\w64\\glpsol'
 
 solver=pyo.SolverFactory(solvername,executable=solverpath_exe)
@@ -39,13 +40,13 @@ def step1_optimize_DAA(n_cycles, energy_cap, power_cap, DAA_price_vector):
     """
     
 
-
+    # personally not a fan of one line-one comment
     # Initialize pyomo model:
 
     model = pyo.ConcreteModel()
 
 
-
+    # for example here, you can create a function called set_parameters()
     # Set parameters:
 
     # Number of hours
@@ -76,8 +77,10 @@ def step1_optimize_DAA(n_cycles, energy_cap, power_cap, DAA_price_vector):
 
 
     # Set Constraints: 
+    # not a fan of using numbers to mark contraints, I would prefer longer names and a doc string for each function.
 
     # (Constr. 1.1) State of charge can never be higher than Energy Capacity:
+    # these functions can have type hints.
     def constr_1_1(model, i):
         return model.soc[i] <= energy_cap
     model.constr_1_1 = pyo.Constraint(model.Q_plus_1, rule=constr_1_1)
