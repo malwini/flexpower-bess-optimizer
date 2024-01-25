@@ -23,7 +23,7 @@ solver=pyo.SolverFactory(solvername,executable=solverpath_exe)
 def step1_optimize_DAA(n_cycles, energy_cap, power_cap, DAA_price_vector):
 
     """
-    Calculates optimal charge/discharge schedule on the day-ahead for a given 96-d DAA_price_vector.
+    Calculates optimal charge/discharge schedule on the day-ahead auction for a given 96-d DAA_price_vector.
 
     Parameters:
     - n_cycles: Maximum number of allowed cycles
@@ -161,7 +161,7 @@ def step1_optimize_DAA(n_cycles, energy_cap, power_cap, DAA_price_vector):
 def step2_optimize_IDA(n_cycles, energy_cap, power_cap, IDA_price_vector, step1_cha_DAA, step1_dis_DAA):
 
     """
-    Calculates optimal charge/discharge schedule on the day-ahead for a given 96-d IDA_price_vector.
+    Calculates optimal charge/discharge schedule on the intraday auction for a given 96-d IDA_price_vector.
 
     Parameters:
     - n_cycles: Maximum number of allowed cycles
@@ -309,7 +309,7 @@ def step2_optimize_IDA(n_cycles, energy_cap, power_cap, IDA_price_vector, step1_
 def step3_optimize_IDC(n_cycles, energy_cap, power_cap, IDC_price_vector, step2_cha_DAAIDA, step2_dis_DAAIDA):
     
     """
-    Calculates optimal charge/discharge schedule on the day-ahead for a given 96-d IDC_price_vector.
+    Calculates optimal charge/discharge schedule on the intraday continuous for a given 96-d IDC_price_vector.
 
     Parameters:
     - n_cycles: Maximum number of allowed cycles
